@@ -1,6 +1,7 @@
 package aplication;
 
 
+import java.util.Date;
 import java.util.List;
 import model.dao.DaoFabrica;
 import model.dao.VendedorDao;
@@ -27,14 +28,17 @@ public class Programa {
 		}
 		
 		System.out.println("\n=== TEST 3: vendedor encontrar todoso =====");
-		
 		listaa=vendedorDao.acharTodos();
-		
 		for(Vendedor obj:listaa)
 		{
 			System.out.println(obj);
 		}
 		 
+		
+		System.out.println("\n=== TEST 4: vendedor Inserir =====");
+		Vendedor newVendedor= new Vendedor(null,"Gred","gred@gmail.com",new Date(),4000.0,departamento);
+		vendedorDao.inserir(newVendedor);
+		System.out.println("Inserido!  new Id= "+newVendedor.getId());
 	}
 
 }
