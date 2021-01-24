@@ -55,17 +55,9 @@ public class VendedorDaoJDBC implements VendedorDao {
 				rs=st.executeQuery();
 				if(rs.next())
 				{
-					Departamento dep=new Departamento();
-					dep.setId(rs.getInt("DepartmentId"));
-					dep.setNome(rs.getString("DepName"));
+					Departamento dep=intanciandoDepartamento(rs);
 					
-					Vendedor obj=new Vendedor();
-					obj.setId(rs.getInt("Id"));
-					obj.setNome(rs.getString("Name"));
-					obj.setEmail(rs.getString("Email"));
-					obj.setSalario(rs.getDouble("BaseSalary"));
-					obj.setAniversario(rs.getDate("BirthDate"));
-					obj.setDepartamento(dep);
+					Vendedor obj=intanciandoVendedor(rs,dep);
 					return obj;
 				}
 				return null;
@@ -80,6 +72,22 @@ public class VendedorDaoJDBC implements VendedorDao {
 			}
 			
 		}
+	private Vendedor intanciandoVendedor(ResultSet rs, Departamento dep) throws SQLException {
+		Vendedor obj=new Vendedor();
+		obj.setId(rs.getInt("Id"));
+		obj.setNome(rs.getString("Name"));
+		obj.setEmail(rs.getString("Email"));
+		obj.setSalario(rs.getDouble("BaseSalary"));
+		obj.setAniversario(rs.getDate("BirthDate"));
+		obj.setDepartamento(dep);
+		return obj;
+	}
+	private Departamento intanciandoDepartamento(ResultSet rs) throws SQLException {
+		Departamento dep=new Departamento();
+		dep.setId(rs.getInt("DepartmentId"));
+		dep.setNome(rs.getString("DepName"));
+		return dep;
+	}
 		
 		
 	
