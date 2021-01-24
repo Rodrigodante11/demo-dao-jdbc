@@ -18,9 +18,18 @@ public class Programa {
 		System.out.println(vendedor);
 		
 		System.out.println("\n=== TEST 2: vendedor encontratPorDepartamento =====");
-		
 		Departamento departamento= new Departamento(2,null);
 		List<Vendedor>listaa=vendedorDao.acharPorDepartamento(departamento);
+		
+		for(Vendedor obj:listaa)
+		{
+			System.out.println(obj);
+		}
+		
+		System.out.println("\n=== TEST 3: vendedor encontrar todoso =====");
+		
+		listaa=vendedorDao.acharTodos();
+		
 		for(Vendedor obj:listaa)
 		{
 			System.out.println(obj);
